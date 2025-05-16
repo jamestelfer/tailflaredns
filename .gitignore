@@ -1,0 +1,7 @@
+.devbox
+
+# configuration secrets are stored in this file
+.envrc.private
+
+# server alias configuration is located in this file
+config.yaml
