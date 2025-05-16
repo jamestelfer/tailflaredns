@@ -47,3 +47,8 @@ aliases:
     - picluster1 # map to a pair of Tailscale servers
     - picluster2
 ```
+
+## Running locally
+
+1. Execute `devbox install`
+2. Execute `go run main.go`
