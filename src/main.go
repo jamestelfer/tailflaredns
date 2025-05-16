@@ -299,15 +299,15 @@ func crud[T any, K comparable](current []T, after []T, keyFunc func(T) K) (creat
 		afterSet[keyFunc(e)] = e
 	}
 
-	// find records to create or update
+	// find records to create that are only in the "after" set
 	for key, val := range afterSet {
-		if _, exists := existingSet[key]; exists {
-		} else {
+		if _, exists := existingSet[key]; !exists {
 			create = append(create, val)
 		}
 	}
 
-	// find records to delete or update -- existing records will have their ID data set
+	// find records to delete or update -- either in both sets or only in the existing set
+	// The existing set has the ID of the record which is needed for update and delete operations.
 	for key, val := range existingSet {
 		if _, exists := afterSet[key]; exists {
 			update = append(update, val)
